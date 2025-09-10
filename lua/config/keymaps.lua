@@ -40,3 +40,15 @@ map("n", "<F3>", function()
   dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 end, { desc = "Debug: Conditional Breakpoint" })
 map("n", "<F4>", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+
+---hapoon
+
+local harpoon = require("harpoon")
+harpoon.setup()
+
+map("n", "<F1>", function()
+  harpoon:list():add()
+end)
+map("n", "<F2>", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
