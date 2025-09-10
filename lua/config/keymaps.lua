@@ -18,3 +18,25 @@ map(
 map("x", "<leader>p", [["_dP]], { desc = "Paste over selection" })
 map("n", "<leader>Y", [["+Y]], { desc = "Yank line to clipboard" })
 map({ "n", "v" }, "<leader>D", '"_d', { desc = "Delete without yank" })
+
+--- DAP
+local dap = require("dap")
+map("n", "<F5>", function()
+  dap.continue()
+end, { desc = "DAP Continue" })
+
+map("n", "<F9>", function()
+  dap.step_over()
+end, { desc = "DAP Step Over" })
+
+map("n", "<F10>", function()
+  dap.step_into()
+end, { desc = "DAP Step Into" })
+
+map("n", "<F11>", function()
+  dap.step_out()
+end, { desc = "DAP Step Out" })
+map("n", "<F3>", function()
+  dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { desc = "Debug: Conditional Breakpoint" })
+map("n", "<F4>", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
