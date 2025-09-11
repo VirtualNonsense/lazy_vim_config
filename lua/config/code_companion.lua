@@ -11,40 +11,16 @@ require("codecompanion").setup({
   },
   strategies = {
     chat = {
-      adapter = "qwen3",
+      adapter = "ollama",
+      model = "qwen3:latest",
     },
     inline = {
-      adapter = "qwen3",
+      adapter = "ollama",
+      model = "qwen3:latest",
     },
     cmd = {
-      adapter = "qwen3",
-    },
-  },
-  adapters = {
-    http = {
-      qwen3 = function()
-        return require("codecompanion.adapters").extend("ollama", {
-          name = "qwen3", -- Give this adapter a different name to differentiate it from the default ollama adapter
-          opts = {
-            vision = true,
-            stream = true,
-          },
-          schema = {
-            model = {
-              default = "qwen3:latest",
-            },
-            num_ctx = {
-              default = 16384,
-            },
-            think = {
-              default = false,
-            },
-            keep_alive = {
-              default = "5m",
-            },
-          },
-        })
-      end,
+      adapter = "ollama",
+      model = "qwen3:latest",
     },
   },
 })
