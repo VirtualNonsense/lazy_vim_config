@@ -6,20 +6,22 @@ local map = vim.keymap.set
 
 map("n", "<A-CR>", vim.lsp.buf.code_action, { desc = "LSP: Code Action" })
 
--- Search & replace
+--#region Search & replace
 map(
   "n",
   "<leader>rR",
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Replace word under cursor in file" }
 )
+--#endregion
 
--- Clipboard + delete behavior
+--#region Clipboard + delete behavior
 map("x", "<leader>p", [["_dP]], { desc = "Paste over selection" })
 map("n", "<leader>Y", [["+Y]], { desc = "Yank line to clipboard" })
 map({ "n", "v" }, "<leader>D", '"_d', { desc = "Delete without yank" })
+--#endregion
 
---- DAP
+--#region DAP
 local dap = require("dap")
 map("n", "<F5>", function()
   dap.continue()
@@ -40,9 +42,9 @@ map("n", "<F3>", function()
   dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 end, { desc = "Debug: Conditional Breakpoint" })
 map("n", "<F4>", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+--#endregion
 
----hapoon
-
+--#region hapoon
 local harpoon = require("harpoon")
 harpoon.setup()
 
@@ -52,7 +54,9 @@ end)
 map("n", "<F2>", function()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
---- neotest
+--#endregion
+
+--#region neotest
 local neotest = require("neotest")
 map("n", "<leader>tr", function()
   neotest.run.run()
@@ -82,3 +86,9 @@ end, { desc = "Test: toggle output" })
 map("n", "<leader>tw", function()
   neotest.watch.toggle(vim.fn.expand("%"))
 end, { desc = "Test: toggle watch" })
+--#endregion
+--#region code companion
+map({ "n", "v" }, "gca", "<cmd>CodeCompanionActions<cr>", { desc = "Codecompanion: actions" })
+map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Codecompanion toggle chat" })
+map("v", "A", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc = "Codecompanion: add to chat" })
+--#endregion
