@@ -88,7 +88,7 @@ map("n", "<leader>tw", function()
 end, { desc = "Test: toggle watch" })
 --#endregion
 --#region code companion
-map({ "n", "v" }, "gca", "<cmd>CodeCompanionActions<cr>", { desc = "Codecompanion: actions" })
+map({ "n", "v" }, "gC", "<cmd>CodeCompanionActions<cr>", { desc = "Codecompanion: actions" })
 map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Codecompanion toggle chat" })
 map("v", "A", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc = "Codecompanion: add to chat" })
 --#endregion
