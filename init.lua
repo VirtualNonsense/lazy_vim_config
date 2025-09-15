@@ -2,3 +2,4 @@
 require("config.lazy")
 require("config.lsp-config")
 require("config.code_companion")
+require("config.jupynuim")
