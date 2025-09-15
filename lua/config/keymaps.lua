@@ -92,3 +92,6 @@ map({ "n", "v" }, "gC", "<cmd>CodeCompanionActions<cr>", { desc = "Codecompanion
 map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Codecompanion toggle chat" })
 map("v", "A", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc = "Codecompanion: add to chat" })
 --#endregion
+--#region jupynium
+map({ "n", "i" }, "<A-c>", "<cmd>JupyniumExecuteSelectedCells<cr>", { desc = "Jupynium: Execute selected cell" })
+--#endregion
