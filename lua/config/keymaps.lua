@@ -5,7 +5,7 @@
 local map = vim.keymap.set
 
 map("n", "<A-CR>", vim.lsp.buf.code_action, { desc = "LSP: Code Action" })
-
+map({ "n", "i", "v" }, "<C-z>", "<Nop>", { silent = true })
 --#region Search & replace
 map(
   "n",
