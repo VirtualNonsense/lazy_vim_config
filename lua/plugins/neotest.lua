@@ -18,6 +18,7 @@ return {
           args = { "-q" },
         })
       )
+      table.insert(opts.adapters, require("rustaceanvim.neotest"))
     end,
   },
 }
