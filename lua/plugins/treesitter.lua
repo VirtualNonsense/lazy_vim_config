@@ -11,7 +11,7 @@ return {
         "markdown_inline",
         "python",
         "regex",
-        "rst",
+        "rust",
         "toml",
         "yaml",
       },
