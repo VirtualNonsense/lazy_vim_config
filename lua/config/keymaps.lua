@@ -44,18 +44,6 @@ end, { desc = "Debug: Conditional Breakpoint" })
 map("n", "<F4>", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
 --#endregion
 
---#region hapoon
-local harpoon = require("harpoon")
-harpoon.setup()
-
-map("n", "<F1>", function()
-  harpoon:list():add()
-end)
-map("n", "<F2>", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
---#endregion
-
 --#region neotest
 local neotest = require("neotest")
 map("n", "<leader>tr", function()
@@ -86,11 +74,6 @@ end, { desc = "Test: toggle output" })
 map("n", "<leader>tw", function()
   neotest.watch.toggle(vim.fn.expand("%"))
 end, { desc = "Test: toggle watch" })
---#endregion
---#region code companion
-map({ "n", "v" }, "gC", "<cmd>CodeCompanionActions<cr>", { desc = "Codecompanion: actions" })
-map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Codecompanion toggle chat" })
-map("v", "A", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true, desc = "Codecompanion: add to chat" })
 --#endregion
 --#region jupynium
 map({ "n", "i" }, "<A-c>", "<cmd>JupyniumExecuteSelectedCells<cr>", { desc = "Jupynium: Execute selected cell" })
