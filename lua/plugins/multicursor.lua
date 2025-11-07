@@ -24,17 +24,11 @@ return {
 
       -- Add or skip adding a new cursor by matching word/selection
       set({ "n", "x" }, "<m-up>", function()
-        mc.matchAddCursor(1)
-      end, { desc = "MultiCursor: match add cursor +" })
-      set({ "n", "x" }, "<leader>s", function()
-        mc.matchSkipCursor(1)
-      end, { desc = "MultiCursor: match skip +" })
+        mc.lineAddCursor(-1)
+      end, { desc = "MultiCursor: Select up" })
       set({ "n", "x" }, "<m-down>", function()
-        mc.matchAddCursor(-1)
-      end, { desc = "MultiCursor: match add -" })
-      set({ "n", "x" }, "<leader>S", function()
-        mc.matchSkipCursor(-1)
-      end, { desc = "MultiCursor: match skip -" })
+        mc.lineAddCursor(1)
+      end, { desc = "MultiCursor: Select down" })
 
       -- Add and remove cursors with control + left click.
       set("n", "<c-leftmouse>", mc.handleMouse)
