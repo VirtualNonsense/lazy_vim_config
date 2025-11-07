@@ -1,6 +1,9 @@
 local lspconfig = require("lspconfig")
 local servers = {
   clangd = {},
+  cssls = {},
+  html = {},
+  jsonls = {},
   pyright = {
     settings = {
       pyright = {
@@ -15,7 +18,7 @@ local servers = {
       },
     },
   },
-  ruff_lsp = {
+  ruff = {
     init_options = {
       settings = {
         args = {},
