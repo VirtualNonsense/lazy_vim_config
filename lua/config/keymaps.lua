@@ -27,6 +27,7 @@ map("n", "<F5>", function()
   dap.continue()
 end, { desc = "DAP Continue" })
 
+map("n", "<leader>dr", require("user").load_launch_files, { desc = "Reload configs" })
 map("n", "<F9>", function()
   dap.step_over()
 end, { desc = "DAP Step Over" })
