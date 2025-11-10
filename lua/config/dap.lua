@@ -1,7 +1,7 @@
 local dap = require("dap")
 local nv_text = require("nvim-dap-virtual-text")
 local mason_dap = require("mason-nvim-dap")
-require("user").load_launch_files()
+require("user").load_launch_files(false)
 nv_text.setup({})
 -- mason-nvim-dap
 
