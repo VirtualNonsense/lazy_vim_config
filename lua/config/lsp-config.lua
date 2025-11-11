@@ -25,20 +25,24 @@ local servers = {
       },
     },
   },
-  -- ✅ MyPy via pylsp + pylsp-mypy (all other pylsp plugins disabled)
+
   pylsp = {
     settings = {
       pylsp = {
         plugins = {
-          -- enable mypy
+          -- MyPy on
           pylsp_mypy = {
             enabled = true,
-            live_mode = true, -- on-the-fly checks
-            dmypy = true, -- use the mypy daemon if available
-            strict = false, -- toggle if you run --strict in CI
-            -- report_progress = true, -- optional progress notifications
+            live_mode = true,
+            dmypy = true,
+            strict = false,
           },
-          -- disable everything else to avoid overlap with Ruff/Pyright
+          -- Everything else off (including Jedi)
+          jedi_completion = { enabled = false },
+          jedi_hover = { enabled = false },
+          jedi_references = { enabled = false },
+          jedi_signature_help = { enabled = false },
+          jedi_symbols = { enabled = false },
           pycodestyle = { enabled = false },
           pyflakes = { enabled = false },
           mccabe = { enabled = false },
@@ -53,10 +57,15 @@ local servers = {
         },
       },
     },
-    -- optional, keep pylsp from providing hovers/formatting
     on_attach = function(client, _)
+      -- keep only diagnostics; disable everything that could collide with pyright
       client.server_capabilities.hoverProvider = false
       client.server_capabilities.documentFormattingProvider = false
+      -- disable "find references" (e.g. :lua vim.lsp.buf.references())
+      client.server_capabilities.referencesProvider = false
+
+      -- disable symbol renaming (e.g. :lua vim.lsp.buf.rename())
+      client.server_capabilities.renameProvider = false
     end,
     filetypes = { "python" },
   },
@@ -88,6 +97,5 @@ local servers = {
 
 for name, opts in pairs(servers) do
   vim.lsp.enable(name)
-  -- vim.lsp.config(name, opts)
   lspconfig[name].setup(opts)
 end
