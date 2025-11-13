@@ -5,3 +5,4 @@ require("config.jupynuim")
 require("overseer").setup({
   templates = { "builtin", "user" },
 })
+require("config.autocommands")
