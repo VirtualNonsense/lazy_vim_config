@@ -124,17 +124,22 @@ return {
       -- Project-wide
       { name = "mypy .", args = { "mypy", "." }, tags = { TAG.TEST } },
       { name = "pytest", args = { "pytest" }, tags = { TAG.TEST } },
-      { name = "ruff check .", args = { "ruff", "check", "." }, tags = { TAG.TEST } },
-      { name = "ruff fix .", args = { "ruff", "fix", "." }, tags = { TAG.TEST } },
+      {
+        name = "ruff (.toml) check .",
+        args = { "ruff", "--config", "pyproject.toml", "check", "." },
+        tags = { TAG.TEST },
+      },
+      {
+        name = "ruff (.toml) fix .",
+        args = { "ruff", "--config", "pyproject.toml", "format", "." },
+        tags = { TAG.TEST },
+      },
 
       -- File-scoped (uses % expansion to current file)
       { name = "mypy %", args = { "mypy", "%:p" }, tags = { TAG.TEST } },
       { name = "pytest %", args = { "pytest", "%:p" }, tags = { TAG.TEST } },
-      { name = "ruff check %", args = { "ruff", "check", "%:p" }, tags = { TAG.TEST } },
-      { name = "ruff fix %", args = { "ruff", "fix", "%:p" }, tags = { TAG.TEST } },
 
       -- Extras
-      { name = "python -m mypy .", args = { "python", "-m", "mypy", "." }, tags = { TAG.TEST } },
     }
 
     local roots = {
