@@ -125,6 +125,11 @@ return {
       { name = "mypy .", args = { "mypy", "." }, tags = { TAG.TEST } },
       { name = "pytest", args = { "pytest" }, tags = { TAG.TEST } },
       {
+        name = "ruff check select fix",
+        args = { "ruff", "check", "--select", "I", "--fix" },
+        tags = { TAG.TEST },
+      },
+      {
         name = "ruff (.toml) check .",
         args = { "ruff", "--config", "pyproject.toml", "check", "." },
         tags = { TAG.TEST },
