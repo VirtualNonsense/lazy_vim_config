@@ -86,6 +86,9 @@ local servers = {
       },
     },
   },
+  tinymist = {
+    cmd = { "tinymist" },
+  },
   tombi = {
 
     filetypes = { "toml" },
@@ -94,6 +97,5 @@ local servers = {
 }
 
 for name, opts in pairs(servers) do
-  vim.lsp.enable(name)
   lspconfig[name].setup(opts)
 end

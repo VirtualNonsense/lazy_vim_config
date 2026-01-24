@@ -13,6 +13,7 @@ return {
         "python",
         "regex",
         "rust",
+        "typst",
         "toml",
         "yaml",
       },
