@@ -56,7 +56,7 @@ return {
         },
       },
       tinymist = {
-        cmd = { "tinymist" },
+        cmd = { vim.fn.has("win32") == 1 and "tinymist.cmd" or "tinymist" },
       },
       tombi = {
         filetypes = { "toml" },
