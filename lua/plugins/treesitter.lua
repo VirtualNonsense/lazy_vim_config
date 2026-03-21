@@ -17,6 +17,7 @@ return {
         "typst",
         "toml",
         "yaml",
+        "yuck",
       },
     },
   },
