@@ -7,6 +7,7 @@ return {
       cssls = {},
       html = {},
       jsonls = {},
+      nil_ls = {},
       pyright = {
         settings = {
           pyright = {
