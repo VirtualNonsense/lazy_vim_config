@@ -7,6 +7,15 @@ local map = vim.keymap.set
 map("n", "<A-CR>", vim.lsp.buf.code_action, { desc = "LSP: Code Action" })
 map({ "n", "i", "v" }, "<C-z>", "<Nop>", { silent = true })
 --#region Search & replace
+
+map("v", "/", 'y/\\V<C-r>"<CR>', { desc = "Search for visual selection" })
+
+map("v", "<leader>/", function()
+  vim.cmd('noau normal! "zy')
+  local selection = vim.fn.getreg("z")
+  Snacks.picker.grep({ search = selection })
+end, { desc = "Grep visual selection" })
+
 map(
   "n",
   "<leader>rR",
