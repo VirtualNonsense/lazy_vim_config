@@ -6,6 +6,11 @@ local map = vim.keymap.set
 
 map("n", "<A-CR>", vim.lsp.buf.code_action, { desc = "LSP: Code Action" })
 map({ "n", "i", "v" }, "<C-z>", "<Nop>", { silent = true })
+-- Swap current char with the one on the left
+map("n", "<A-h>", "xhP", { desc = "Swap char left" })
+
+-- Swap current char with the one on the right
+map("n", "<A-l>", "xp", { desc = "Swap char right" })
 --#region Search & replace
 
 map("v", "/", 'y/\\V<C-r>"<CR>', { desc = "Search for visual selection" })
