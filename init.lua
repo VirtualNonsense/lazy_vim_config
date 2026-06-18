@@ -5,3 +5,4 @@ require("overseer").setup({
   templates = { "builtin", "user" },
 })
 require("config.autocommands")
+require("config.spell")
