@@ -58,3 +58,31 @@ vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "term://*",
   callback = activate_selected_venv_for_terminal,
 })
+
+local rust_pairs = vim.api.nvim_create_augroup("RustDisableSingleQuotePair", {
+  clear = true,
+})
+
+local function disable_rust_single_quote()
+  if vim.bo.filetype == "rust" and _G.MiniPairs then
+    MiniPairs.unmap("i", "'", "''")
+  end
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = rust_pairs,
+  pattern = "rust",
+  callback = disable_rust_single_quote,
+  desc = "Disable automatic single-quote pairing in Rust",
+})
+
+vim.api.nvim_create_autocmd("User", {
+  group = rust_pairs,
+  pattern = "LazyLoad",
+  callback = function(event)
+    if event.data == "mini.pairs" then
+      disable_rust_single_quote()
+    end
+  end,
+  desc = "Disable Rust single-quote pair after mini.pairs loads",
+})
