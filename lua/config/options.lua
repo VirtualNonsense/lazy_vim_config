@@ -6,3 +6,9 @@ vim.opt.fileformats = { "unix", "dos", "mac" }
 if vim.fn.has("win32") == 1 then
   LazyVim.terminal.setup("pwsh")
 end
+
+vim.filetype.add({
+  extension = {
+    ksy = "yaml",
+  },
+})

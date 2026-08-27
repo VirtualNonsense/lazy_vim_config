@@ -8,6 +8,24 @@ return {
       html = {},
       jsonls = {},
       nil_ls = {},
+      yamlls = {
+        cmd = { "yaml-language-server.cmd", "--stdio" },
+        settings = {
+          yaml = {
+            schemas = {
+              ["https://raw.githubusercontent.com/kaitai-io/ksy_schema/master/ksy_schema.json"] = "/*.ksy",
+            },
+            format = {
+              enable = true,
+            },
+          },
+          redhat = {
+            telemetry = {
+              enabled = false,
+            },
+          },
+        },
+      },
       pyright = {
         settings = {
           pyright = {
