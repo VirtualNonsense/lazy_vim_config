@@ -3,7 +3,9 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      clangd = {},
+      clangd = {
+        root_markers = { "compile_commands.json", ".clangd", "platformio.ini", ".git" },
+      },
       cssls = {},
       html = {},
       jsonls = {},
@@ -41,7 +43,6 @@ return {
           },
         },
       },
-
       ruff = {
         cmd = { "ruff", "server" },
         filetypes = { "python" },
