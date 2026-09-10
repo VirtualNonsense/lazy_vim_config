@@ -3,11 +3,13 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      clangd = {},
-      cssls = {},
-      html = {},
-      jsonls = {},
-      nil_ls = {},
+      clangd = { mason = false },
+      cssls = { mason = false },
+      html = { mason = false },
+      jsonls = { mason = false },
+      nil_ls = { mason = false },
+      lua_ls = { mason = false },
+      ty = {mason = false},
       yamlls = {
         cmd = { "yaml-language-server.cmd", "--stdio" },
         settings = {
@@ -27,6 +29,7 @@ return {
         },
       },
       pyright = {
+        mason = false,
         settings = {
           pyright = {
             disableOrganizeImports = true,
@@ -41,8 +44,8 @@ return {
           },
         },
       },
-
       ruff = {
+        mason = false,
         cmd = { "ruff", "server" },
         filetypes = { "python" },
         root_dir = lspconfig.util.root_pattern("pyproject.toml", "ruff.toml", ".ruff.toml", ".git"),
@@ -56,6 +59,7 @@ return {
         end,
       },
       texlab = {
+        mason = false,
         settings = {
           texlab = {
             auxDirectory = "build",
@@ -75,9 +79,11 @@ return {
         },
       },
       tinymist = {
+        mason = false,
         cmd = { vim.fn.has("win32") == 1 and "tinymist.cmd" or "tinymist" },
       },
       tombi = {
+        mason = false,
         filetypes = { "toml" },
         root_markers = { "tombi.toml", "pyproject.toml", ".git", "Cargo.toml" },
       },
