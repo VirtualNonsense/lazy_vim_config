@@ -43,7 +43,7 @@ return {
       },
       nil_ls = { mason = false, enabled = false },
       lua_ls = { mason = false },
-      ty = {mason = false},
+      ty = { mason = false },
       yamlls = {
         cmd = { "yaml-language-server.cmd", "--stdio" },
         settings = {
