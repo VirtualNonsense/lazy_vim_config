@@ -1,4 +1,19 @@
 local lspconfig = require("lspconfig")
+
+
+local function get_hostname()
+  local f = io.open("/etc/hostname", "r")
+  if f then
+    local name = f:read("*l")
+    f:close()
+    return name
+  end
+  return "pavilion"
+end
+
+local host = get_hostname()
+local flake_path = vim.fn.expand("~/.config/nixos")
+
 return {
   "neovim/nvim-lspconfig",
   opts = {
@@ -7,7 +22,26 @@ return {
       cssls = { mason = false },
       html = { mason = false },
       jsonls = { mason = false },
-      nil_ls = { mason = false },
+      nixd = {
+        mason = false,
+        settings = {
+          nixd = {
+            formatting = {
+              command = { "alejandra" },
+            },
+            options = {
+              nixos = {
+                expr = '(builtins.getFlake "' .. flake_path .. '").nixosConfigurations."' .. host .. '".options',
+              },
+              home_manager = {
+                expr = '(builtins.getFlake "' .. flake_path .. '").nixosConfigurations."' .. host ..
+                    '".options.home-manager.users.type.getSubOptions []',
+              },
+            },
+          },
+        },
+      },
+      nil_ls = { mason = false, enabled = false },
       lua_ls = { mason = false },
       ty = {mason = false},
       yamlls = {
