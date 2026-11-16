@@ -68,6 +68,7 @@ return {
         },
       },
       pyright = {
+        enabled = false,
         mason = false,
         settings = {
           pyright = {
@@ -86,16 +87,13 @@ return {
       ruff = {
         mason = false,
         cmd = { "ruff", "server" },
-        filetypes = { "python" },
-        root_dir = lspconfig.util.root_pattern("pyproject.toml", "ruff.toml", ".ruff.toml", ".git"),
         init_options = {
           settings = {
-            args = {},
+            lint = {
+              enable = true,
+            },
           },
         },
-        on_attach = function(client)
-          client.server_capabilities.hoverProvider = false
-        end,
       },
       texlab = {
         mason = false,
